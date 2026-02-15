@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五行属性起名助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Serif SC', serif;
+            background-color: #fdf5e6; /* Old Lace / Light Golden */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Taiji Background Pattern - Black and White */
+        .taiji-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vmin;
+            height: 100vmin;
+            z-index: -1;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.15; /* Subtle watermark feel */
+        }
+
+        .taiji-symbol {
+            width: 85%;
+            height: 85%;
+            animation: rotateTaiji 120s linear infinite;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.05));
+        }
+
+        @keyframes rotateTaiji {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #fdf5e6 0%, #fae6b1 100%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism adjustments */
+        header, .bg-white\/90 {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+<body class="gold-gradient">
+    <div class="taiji-container">
+        <!-- SVG Taiji (Yin-Yang) Diagram -->
+        <svg class="taiji-symbol" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer Circle -->
+            <circle cx="50" cy="50" r="49" fill="white" stroke="black" stroke-width="0.5"/>
+            <!-- Black Half -->
+            <path d="M50 1 A49 49 0 0 1 50 99 A24.5 24.5 0 0 1 50 50 A24.5 24.5 0 0 0 50 1" fill="black"/>
+            <!-- Small Circles (The 'Eyes') -->
+            <circle cx="50" cy="25.5" r="7" fill="white"/>
+            <circle cx="50" cy="74.5" r="7" fill="black"/>
+            
+            <!-- Optional Bagua elements can be added here, but a clean Taiji looks more 'noble' -->
+            <g stroke="black" stroke-width="1.5" stroke-linecap="round" opacity="0.6">
+                <!-- Simple 8-line Bagua pattern markers -->
+                <line x1="50" y1="5" x2="50" y2="10" />
+                <line x1="50" y1="90" x2="50" y2="95" />
+                <line x1="5" y1="50" x2="10" y2="50" />
+                <line x1="90" y1="50" x2="95" y2="50" />
+            </g>
+        </svg>
+    </div>
+    <div id="root"></div>
+</body>
+</html>
